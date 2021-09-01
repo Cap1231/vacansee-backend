@@ -1,0 +1,23 @@
+FROM ruby:3.0
+
+RUN apt-get update -qq && apt-get install -y \
+    build-essential \
+    libpq-dev nodejs
+
+ARG ENV_FILE
+RUN echo "$ENV_FILE" > .env
+
+WORKDIR /myapp
+
+COPY ["Gemfile", "Gemfile.lock", "./"]
+RUN bundle install
+
+COPY . .
+
+# 本番用の dockerイメージ毎回新しく作られると思うので .pid が存在しないはず
+# COPY entrypoint.sh /usr/bin/
+# RUN chmod +x /usr/bin/entrypoint.sh
+# ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+
+CMD ["rails", "server", "-b", "0.0.0.0"]
