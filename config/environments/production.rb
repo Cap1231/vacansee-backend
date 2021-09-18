@@ -113,4 +113,5 @@ Rails.application.configure do
 
   # ホワイトリストに許可したいhostを追加
   config.hosts << "backend-staging.vacanseenow.com"
+  config.hosts << "localhost"
 end
