@@ -2,10 +2,14 @@ FROM ruby:3.0
 
 RUN apt-get update -qq && apt-get install -y \
     build-essential \
-    libpq-dev nodejs
+    libpq-dev nodejs vim
 
-ARG ENV_FILE
-RUN echo "$ENV_FILE" > .env
+ARG ENV_STAGING
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+RUN echo "$ENV_STAGING" > .env
+RUN echo "$AWS_ACCESS_KEY_ID" > .env
+RUN echo "$AWS_SECRET_ACCESS_KEY" > .env
 
 WORKDIR /myapp
 
