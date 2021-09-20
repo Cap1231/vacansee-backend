@@ -2,7 +2,7 @@ FROM ruby:3.0
 
 RUN apt-get update -qq && apt-get install -y \
     build-essential \
-    libpq-dev nodejs
+    libpq-dev nodejs vim
 
 WORKDIR /myapp
 
@@ -18,4 +18,4 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
