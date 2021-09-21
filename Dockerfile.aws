@@ -7,6 +7,9 @@ RUN apt-get update -qq && apt-get install -y \
 ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
+# LogをProdcutionでも吐かせるため
+ENV RAILS_LOG_TO_STDOUT=true
+
 ARG ENV_FILE
 RUN echo "$ENV_FILE" > .env
 
