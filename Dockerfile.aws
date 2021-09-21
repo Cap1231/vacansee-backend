@@ -4,6 +4,9 @@ RUN apt-get update -qq && apt-get install -y \
     build-essential \
     libpq-dev nodejs vim
 
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
+
 ARG ENV_FILE
 RUN echo "$ENV_FILE" > .env
 
