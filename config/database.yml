@@ -8,7 +8,10 @@ default: &default
 
 development:
   <<: *default
+  host: db # デフォルトだとlocalhostになっているはずなので変更
   database: vacansee_development
+  username: root
+  password: password # デフォルトだと空欄になっているはずなので変更
 
 test:
   <<: *default
