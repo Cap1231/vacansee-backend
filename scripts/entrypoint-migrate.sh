@@ -1,4 +1,4 @@
 #!/bin/sh
 
-bundle exec rails db:create
-bundle exec rails db:migrate
+bundle exec rails db:create RAILS_ENV=production
+bundle exec rails db:migrate RAILS_ENV=production
