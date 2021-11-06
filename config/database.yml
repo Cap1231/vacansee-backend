@@ -19,11 +19,11 @@ test:
 
 production:
   <<: *default
-  host: vacanseedb.ct1g5h2by98v.ap-northeast-1.rds.amazonaws.com
-  database: vacanseedb
-  username: dbmaster
-  password: G9qWklHuyWoiLz0NrR56
-  # host: <%= ENV["DATABASE_HOST"] %>
-  # database: <%= ENV["DATABASE_NAME"] %>
-  # username: <%= ENV["DATABASE_USERNAME"] %>
-  # password: <%= ENV["DATABASE_PASSWORD"] %>
+  # host: vacanseedb.ct1g5h2by98v.ap-northeast-1.rds.amazonaws.com
+  # database: vacanseedb
+  # username: dbmaster
+  # password: G9qWklHuyWoiLz0NrR56
+  host: <%= ENV["DATABASE_HOST"] %>
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>

@@ -62,7 +62,7 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker build -f Dockerfile.aws -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --build-arg ENV_FILE='${{ secrets.ENV_STAGING }}' --build-arg RAILS_MASTER_KEY='${{secrets.RAILS_MASTER_KEY}}' .
-        docker run -i --rm --env-file '.env.db' --entrypoint 'scripts/entrypoint-migrate.sh' $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker run -i --rm --env-file=.env.db --entrypoint 'scripts/entrypoint-migrate.sh' $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
